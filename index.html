@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css' integrity='sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==' crossorigin='anonymous'/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.min.css' integrity='sha512-o/MhoRPVLExxZjCFVBsm17Pkztkzmh7Dp8k7/3JrtNCHh0AQ489kwpfA3dPSHzKDe8YCuEhxXq3Y71eb/o6amg==' crossorigin='anonymous'/>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js' integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg==' crossorigin='anonymous'></script>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col col-12 col-sm-6 m-auto">
+                    <h1>To do list</h1>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Feed the dog" aria-label="Feed the dog" aria-describedby="button-addon2" v-model="inputText" @keyup.enter="addToDo">
+                        <button class="btn btn-primary" type="button" id="button-addon2" @click='addToDo'>Add to list</button>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item form-check form-switch d-flex justify-content-between" v-for="(item, i) in listItems">
+                            <input class="form-check-input" type="checkbox" role="switch" :id="i" @click="justDone(i)">
+                            <label class="form-check-label" :for="i" :class="{'text-decoration-line-through': listItems[i].done}">{{ listItems[i].title }}</label><i class="fa fa-xmark align-self-center" @click="removeToDo(i)"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
